@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.22)
 set(CMAKE_CXX_STANDARD 11)
 
 # Set the project name and version
-project(${PROJECT_NAME} VERSION 1.0)
+project(${PROJECT_NAME} VERSION 1.0 LANGUAGES CXX)
 
 # Specify path to include directory
 include_directories(include)
@@ -25,4 +25,3 @@ target_compile_options(${TARGET_NAME}
 
 # Set default build type to `Debug`
 set(CMAKE_BUILD_TYPE Debug)
-
