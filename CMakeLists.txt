@@ -13,7 +13,7 @@ project(${PROJECT_NAME} VERSION 1.0 LANGUAGES CXX)
 include_directories(include)
 
 # Get all source .cpp files and add them to the executable target
-file(GLOB SRC_FILES "src/*.cpp")
+file(GLOB_RECURSE SRC_FILES "src/*.cpp")
 add_executable(${TARGET_NAME} ${SRC_FILES})
 
 # Set compiler flags based on build type
@@ -34,3 +34,11 @@ add_test(
     NAME mem
     COMMAND valgrind --leak-check=full --track-origins=yes --error-exitcode=1 ./${TARGET_NAME}
 )
+
+# Add unit tests
+file(GLOB_RECURSE TEST_FILES "tests/*.cpp")
+foreach(TEST_FILE ${TEST_FILES})
+    get_filename_component(TEST_NAME ${TEST_FILE} NAME_WE)
+    add_executable(${TEST_NAME} ${TEST_FILE})
+    add_test(NAME ${TEST_NAME} COMMAND ./${TEST_NAME})
+endforeach()
