@@ -6,7 +6,7 @@ set(TARGET_NAME "project")
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 set(CMAKE_DISABLE_SOURCE_CHANGES  ON)
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-  message(SEND_ERROR "In-source builds are not allowed.")
+    message(SEND_ERROR "In-source builds are not allowed.")
 endif ()
 
 # Set CMake version and C++ standard
@@ -64,7 +64,7 @@ else()
 
     # Add a target to generate Doxygen documentation
     add_custom_target(
-        doc
+        docs
         COMMAND ${DOXYGEN_EXECUTABLE} doxyfile
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         COMMENT "Generating Doxygen documentation"
